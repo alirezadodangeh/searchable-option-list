@@ -1,43 +1,57 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-        <link rel="stylesheet" href="sol.css">
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type="text/javascript" src="sol.js"></script>
+    <link rel="stylesheet" href="sol.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="sol.js"></script>
 </head>
 <body>
+    <div id="my-select" data-sol-name="character4" multiple="multiple"></div>
 
-    <!--<div id="my-select" data-sol-name="character"></div>-->
-    <select id="my-select" name="character" multiple="multiple"><!-- options ommited --></select>
+    <button onclick="OptionList.GetSelection()">GetSelection</button>
 
     <script type="text/javascript">
+        var OptionList = {};
         $(function () {
-            $('#my-select').searchableOptionList({
-                data: [
-                    {
-                        "type": "optiongroup",
-                        "label": "The Griffins",
-                        "children": [
-                            { "type": "option", "value": "Peter", "label": "Peter Griffin" },
-                            { "type": "option", "value": "Lois", "label": "Lois Griffin" },
-                            { "type": "option", "value": "Chris", "label": "Chris Griffin" },
-                            { "type": "option", "value": "Meg", "label": "Meg Griffin" },
-                            { "type": "option", "value": "Stewie", "label": "Stewie Griffin" }
-                        ]
-                    },
-                    {
-                        "type": "optiongroup",
-                        "label": "Peter's Friends",
-                        "children": [
-                            { "type": "option", "value": "Cleveland", "label": "Cleveland Brown" },
-                            { "type": "option", "value": "Joe", "label": "Joe Swanson" },
-                            { "type": "option", "value": "Quagmire", "label": "Glenn Quagmire" }
-                        ]
-                    },
-                    { "type": "option", "value": "Evil Monkey", "label": "Evil Monkey" },
-                    { "type": "option", "value": "Herbert", "label": "John Herbert" }
-                ]
+            var searchable = $('#my-select').searchableOptionList({
+                data: [{
+                    "type": "optiongroup",
+                    "label": "Location",
+                    "children": [{
+                        "type": "option",
+                        "value": "[Location].[P0]",
+                        "label": "Location.P0"
+                    }, {
+                        "type": "option",
+                        "value": "[Location].[P1]",
+                        "label": "Location.P1"
+                    }, {
+                        "type": "option",
+                        "value": "[Location].[P2]",
+                        "label": "Location.P2"
+                    }]
+                }, {
+                    "type": "optiongroup",
+                    "label": "HRM",
+                    "children": [{
+                        "type": "option",
+                        "value": "[HRM].[LocationCode]",
+                        "label": "HRM.LocationCode"
+                    }, {
+                        "type": "option",
+                        "value": "[HRM].[AreaName]",
+                        "label": "HRM.AreaName"
+                    }, {
+                        "type": "option",
+                        "value": "[HRM].[SchoolCode]",
+                        "label": "HRM.SchoolCode"
+                    }]
+                }]
             });
+
+            OptionList.GetSelection =  function GetSelection() {
+                searchable.getSelection().each(function (index, item) { console.log(item) });
+            }
         });
     </script>
 
@@ -45,11 +59,11 @@
 
 
     <script type="text/javascript">
-                        //$(function () {
-                        //    $('#my-select').searchableOptionList({
-                        //        data: 'data.json'
-                        //    });
-                        //});
+                                        //$(function () {
+                                        //    $('#my-select').searchableOptionList({
+                                        //        data: 'data.json'
+                                        //    });
+                                        //});
     </script>
 
 
