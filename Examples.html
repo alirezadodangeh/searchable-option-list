@@ -1,0 +1,1789 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+        <link rel="stylesheet" href="sol.css">
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="sol.js"></script>
+</head>
+<body>
+    <header id="page-header">
+        <nav role="navigation" class="wrapper">
+            <span id="brand">
+                <a href="/searchable-option-list/">Searchable Option List</a>
+            </span>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="configuration.html">Configuration</a>
+                </li>
+                <li class="active">
+                    <a href="examples.html">Examples</a>
+                </li>
+                <li>
+                    <a href="https://github.com/pbauerochse/searchable-option-list" target="_blank">Download @github</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <aside>
+            <div class="box">
+                <header>Table of contents</header>
+                <div id="toc"></div>
+            </div>
+        </aside>
+        <div id="main-content-wrapper">
+            <div id="main-content" class="markdown-body">
+                <h1 id="examples">Examples</h1>
+                <h2 id="what-you-will-get">What you will get</h2>
+                <p>Here is an example of what you will get when you use SOL</p>
+                <p>
+                    <select id="demonstration" name="character0" style="width: 250px" multiple="multiple">
+                        <optgroup label="The Griffins">
+                            <option value="Peter" selected>Peter Griffin</option>
+                            <option value="Lois">Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <br>
+                            <option value="Joe">Joe Swanson</option>
+                            <br>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                            <br>
+                        </optgroup>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                        <option value="Adam" selected>Adam West</option>
+                        <option value="Buzz Killington">Buzz Killington</option>
+                        <option value="Tricia">Tricia Takanawa</option>
+                        <option value="Tom">Tom Tucker</option>
+                        <option value="Jake">Jake Tucker</option>
+                        <option value="Diane">Diane Simmons</option>
+                        <option value="Ollie">Ollie Williams</option>
+                        <option value="Dr Hartmann">Dr. Elmer Hartmann</option>
+                        <option value="Barbara">Barbara Pewterschmidt</option>
+                        <option value="Carter">Carter Pewterschmidt</option>
+                        <option value="Neil">Neil Goldmann</option>
+                        <option value="Mort">Mort Goldmann</option>
+                        <option value="Muriel">Muriel Goldmann</option>
+                        <option value="Consuela">Consuela</option>
+                        <option value="Jillian">Jillian Russel</option>
+                        <option value="Phineas and Barnaby" selected>Phineas and Barnaby</option>
+                        <option value="Vern and Johnny">Vern and Johnny</option>
+                        <option value="Ernie">Ernie The Giant Chicken</option>
+                        <option value="Bruce">Bruce</option>
+                        <option value="Jeffrey">Jeffrey</option>
+                        <option value="Carl">Carl</option>
+                        <br>
+                    </select>
+                </p>
+                <p>You may also use the up and down arrow key to navigate to a certain item and toggle the selection state by hitting the space bar.</p>
+                <h2 id="prerequisites">Prerequisites</h2>
+                <p>First of all you need to have jQuery included in your HTML, then you simply include the SOL js file and the SOL stylesheet.</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="c">&lt;!-- basic HTML code ommited --&gt;</span>
+                    <span class="nt">&lt;head &gt;</span>
+                    <span class="nt">&lt;link</span>
+                    <span class="na">rel=</span>
+                    <span class="s">"stylesheet"</span>
+                    <span class="na">href=</span>
+                    <span class="s">"searchableOptionList.css"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="na">src=</span>
+                    <span class="s">"jQuery.js"</span>
+                    <span class="nt">&gt;&lt;/script &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="na">src=</span>
+                    <span class="s">"sol-{VERSION}.js"</span>
+                    <span class="nt">&gt;&lt;/script &gt;</span>
+                    <span class="nt">&lt;/head &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>That &#39;s all you need to get started. Let &#39;s dive directly into the examples.</p>
+                <h2 id="basic-usage">Basic usage</h2>
+                <p>
+                    The most basic usage is to initialize the plugin without any parameters using an existing <code>&lt;select &gt;</code>
+                    element:
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Cleveland"</span>
+                    <span class="nt">&gt;</span>
+                                Cleveland Brown<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Joe"</span>
+                    <span class="nt">&gt;</span>
+                                Joe Swanson<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Quagmire"</span>
+                    <span class="nt">&gt;</span>
+                                Glenn Quagmire<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Evil Monkey"</span>
+                    <span class="nt">&gt;</span>
+                                Evil Monkey<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Herbert"</span>
+                    <span class="nt">&gt;</span>
+                                John Herbert<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="c1">// initialize sol</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">();</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>This will produce the following result:</p>
+                <p>
+                    <select class="basicSelect" name="character1">
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                        <option value="Cleveland">Cleveland Brown</option>
+                        <br>
+                        <option value="Joe">Joe Swanson</option>
+                        <br>
+                        <option value="Quagmire">Glenn Quagmire</option>
+                        <br>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                        <br>
+                    </select>
+                </p>
+                <p>The selected entry will be shown on top of the HTML element. When you open the option list, you will see, that all the options are shown with a radio button in front of it. That &#39;s because the original select was a single selection element.</p>
+                <p>
+                    <strong>So how do we allow selecting more than one entry?</strong>
+                </p>
+                <p>
+                    Well, how do you allow selecting multiple options in a regular <code>&lt;select &gt;</code>
+                    ? Right, simply add the <code>multiple=&quot;multiple &quot;</code>
+                    attribute!
+                    SOL will adapt accordingly. Easy as pie! No changes to the javascript needed.
+                </p>
+                <p>Let &#39;s try it out:</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">multiple=</span>
+                    <span class="s">"multiple"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Cleveland"</span>
+                    <span class="nt">&gt;</span>
+                                Cleveland Brown<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Joe"</span>
+                    <span class="nt">&gt;</span>
+                                Joe Swanson<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Quagmire"</span>
+                    <span class="nt">&gt;</span>
+                                Glenn Quagmire<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Evil Monkey"</span>
+                    <span class="nt">&gt;</span>
+                                Evil Monkey<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Herbert"</span>
+                    <span class="nt">&gt;</span>
+                                John Herbert<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>
+                    <select class="basicSelect" name="character2" multiple="multiple">
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                        <option value="Cleveland">Cleveland Brown</option>
+                        <br>
+                        <option value="Joe">Joe Swanson</option>
+                        <br>
+                        <option value="Quagmire">Glenn Quagmire</option>
+                        <br>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                    </select>
+                </p>
+                <p>
+                    That was easy, wasn &#39;t it? How about we add some complexity? What about <code>&lt;optgroup &gt;</code>
+                    ? Are they supported? Well yes of course they are:
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">multiple=</span>
+                    <span class="s">"multiple"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;optgroup</span>
+                    <span class="na">label=</span>
+                    <span class="s">"The Griffins"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/optgroup &gt;</span>
+                    <span class="nt">&lt;optgroup</span>
+                    <span class="na">label=</span>
+                    <span class="s">"Peter's Friends"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Cleveland"</span>
+                    <span class="nt">&gt;</span>
+                                Cleveland Brown<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Joe"</span>
+                    <span class="nt">&gt;</span>
+                                Joe Swanson<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Quagmire"</span>
+                    <span class="nt">&gt;</span>
+                                Glenn Quagmire<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/optgroup &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Evil Monkey"</span>
+                    <span class="nt">&gt;</span>
+                                Evil Monkey<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Herbert"</span>
+                    <span class="nt">&gt;</span>
+                                John Herbert<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>
+                    <select class="basicSelect" name="character3" multiple="multiple">
+                        <optgroup label="The Griffins">
+                            <option value="Peter">Peter Griffin</option>
+                            <option value="Lois">Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <br>
+                            <option value="Joe">Joe Swanson</option>
+                            <br>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                            <br>
+                        </optgroup>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                        <br>
+                    </select>
+                </p>
+                <h2 id="more-data-sources">More data sources</h2>
+                <p>
+                    There are more ways to pass the data to SOL than to use an existing <code>select</code>
+                    .
+                </p>
+                <h3 id="initialize-empty-select-with-data-from-array">Initialize empty select with data from array</h3>
+                <p>
+                    You may initialize SOL from any HTML element by passing in an JavaScript array with the initial data. The data must be in valid <a href="configuration.html#data-format">SOL JSON data format</a>
+                    . In that case you also need to specify the <code>name</code>
+                    option by setting the <code>data-sol-name=&quot;character &quot;</code>
+                    attribute. You also could just pass in the name as an option value.
+                </p>
+                <p>This example will result in the same SOL as the optgroup example:</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;div</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-div"</span>
+                    <span class="na">data-sol-name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;&lt;/div &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">data</span>
+                    <span class="p">:</span>
+                    <span class="p">[</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"optiongroup"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"The Griffins"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"children"</span>
+                    <span class="p">:</span>
+                    <span class="p">[</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Peter"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Peter Griffin"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Lois"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Lois Griffin"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Chris"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Chris Griffin"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Meg"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Meg Griffin"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Stewie"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Stewie Griffin"</span>
+                    <span class="p">}</span>
+                    <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"optiongroup"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Peter's Friends"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"children"</span>
+                    <span class="p">:</span>
+                    <span class="p">[</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Cleveland"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Cleveland Brown"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Joe"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Joe Swanson"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Quagmire"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Glenn Quagmire"</span>
+                    <span class="p">}</span>
+                    <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Evil Monkey"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Evil Monkey"</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                    <span class="s2">"type"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"option"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"value"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"Herbert"</span>
+                    <span class="p">,</span>
+                    <span class="s2">"label"</span>
+                    <span class="p">:</span>
+                    <span class="s2">"John Herbert"</span>
+                    <span class="p">}</span>
+                    <span class="p">]</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>Here is the proof:</p>
+                <div id="json-data-array-example" data-sol-name="character4"></div>
+                <p>Note, that SOL now stretches over the full width of the content area. This is because we used a block element (div) to initialize SOL. SOL automatically uses the same width the original element had.</p>
+                <h3 id="initialize-empty-select-with-data-returned-from-a-function">Initialize empty select with data returned from a function</h3>
+                <p>If you need more control you may also pass in a function which then has to return the data to initialize SOL. This enables you to process data retrieved from an url before passing it on to SOL</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">data</span>
+                    <span class="p">:</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="c1">// do what you have to do to get the valid SOL data</span>
+                    <span class="kd">var</span>
+                    <span class="nx">dataInSolFormat</span>
+                    <span class="o">=</span>
+                    <span class="nx">loadDataFromWhereverYouWant</span>
+                    <span class="p">();</span>
+                    <span class="k">return</span>
+                    <span class="nx">dataInSolFormat</span>
+                    <span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <h3 id="initialize-empty-select-from-a-remote-url">Initialize empty select from a remote URL</h3>
+                <p>If you provide an url the data will be loaded from that url via an ajax.get call. The data returned from that URL must be in the same format as in the example before.</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">data</span>
+                    <span class="p">:</span>
+                    <span class="s1">'testdata.json'</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <h3 id="converting-data">Converting data</h3>
+                <p>Sometimes you might want to load the data from a remote URL but that data is not in valid SOL format. In that case you might want to add a converter function which then converts the data to proper SOL format like this:</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;div</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">style=</span>
+                    <span class="s">"width: 250px"</span>
+                    <span class="nt">&gt;&lt;/div &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">data</span>
+                    <span class="p">:</span>
+                    <span class="s1">'some-url-that-does-not-return-sol-format.json'</span>
+                    <span class="p">,</span>
+                    <span class="na">converter</span>
+                    <span class="p">:</span>
+                    <span class="kd">function</span>
+                    <span class="p">(</span>
+                    <span class="nx">sol</span>
+                    <span class="p">,</span>
+                    <span class="nx">rawDataFromUrl</span>
+                    <span class="p">)</span>
+                    <span class="p">{</span>
+                    <span class="kd">var</span>
+                    <span class="nx">solData</span>
+                    <span class="o">=</span>
+                    <span class="p">[];</span>
+                    <span class="c1">// do whatever you have to do</span>
+                    <span class="c1">// to convert rawDataFromUrl to</span>
+                    <span class="c1">// valid SOL data format</span>
+                    <span class="k">return</span>
+                    <span class="nx">solData</span>
+                    <span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <h2 id="options">Options</h2>
+                <p>
+                    SOL comes with a couple of options with which you can customize its behaviour. All available options are documented on the <a href="configuration.html">configuration page</a>
+                    .
+                </p>
+                <h3 id="limiting-the-height-of-the-selection-container">Limiting the height of the selection container</h3>
+                <p>
+                    When there are a lot of possible options available, the selection container might get really long. With the <code>maxHeight</code>
+                    option, you can set a maximum height the container will reach. If the content is longer than that limit, the selection will be scrollable:
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">style=</span>
+                    <span class="s">"width: 300px"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Cleveland"</span>
+                    <span class="nt">&gt;</span>
+                                Cleveland Brown<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Joe"</span>
+                    <span class="nt">&gt;</span>
+                                Joe Swanson<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Quagmire"</span>
+                    <span class="nt">&gt;</span>
+                                Glenn Quagmire<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Evil Monkey"</span>
+                    <span class="nt">&gt;</span>
+                                Evil Monkey<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Herbert"</span>
+                    <span class="nt">&gt;</span>
+                                John Herbert<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Adam"</span>
+                    <span class="nt">&gt;</span>
+                                Adam West<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Buzz Killington"</span>
+                    <span class="nt">&gt;</span>
+                                Buzz Killington<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Tricia"</span>
+                    <span class="nt">&gt;</span>
+                                Tricia Takanawa<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Tom"</span>
+                    <span class="nt">&gt;</span>
+                                Tom Tucker<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Jake"</span>
+                    <span class="nt">&gt;</span>
+                                Jake Tucker<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Diane"</span>
+                    <span class="nt">&gt;</span>
+                                Diane Simmons<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Ollie"</span>
+                    <span class="nt">&gt;</span>
+                                Ollie Williams<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Dr Hartmann"</span>
+                    <span class="nt">&gt;</span>
+                                Dr. Elmer Hartmann<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Barbara"</span>
+                    <span class="nt">&gt;</span>
+                                Barbara Pewterschmidt<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Carter"</span>
+                    <span class="nt">&gt;</span>
+                                Carter Pewterschmidt<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Neil"</span>
+                    <span class="nt">&gt;</span>
+                                Neil Goldmann<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Mort"</span>
+                    <span class="nt">&gt;</span>
+                                Mort Goldmann<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Muriel"</span>
+                    <span class="nt">&gt;</span>
+                                Muriel Goldmann<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Consuela"</span>
+                    <span class="nt">&gt;</span>
+                                Consuela<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Jillian"</span>
+                    <span class="nt">&gt;</span>
+                                Jillian Russel<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Phineas and Barnaby"</span>
+                    <span class="nt">&gt;</span>
+                                Phineas and Barnaby<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Vern and Johnny"</span>
+                    <span class="nt">&gt;</span>
+                                Vern and Johnny<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Ernie"</span>
+                    <span class="nt">&gt;</span>
+                                Ernie The Giant Chicken<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Bruce"</span>
+                    <span class="nt">&gt;</span>
+                                Bruce<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Jeffrey"</span>
+                    <span class="nt">&gt;</span>
+                                Jeffrey<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Carl"</span>
+                    <span class="nt">&gt;</span>
+                                Carl<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">maxHeight</span>
+                    <span class="p">:</span>
+                    <span class="s1">'250px'</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>
+                    <select id="my-verylong-select" name="character5" style="width: 300px">
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                        <option value="Cleveland">Cleveland Brown</option>
+                        <br>
+                        <option value="Joe">Joe Swanson</option>
+                        <br>
+                        <option value="Quagmire">Glenn Quagmire</option>
+                        <br>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                        <option value="Adam">Adam West</option>
+                        <option value="Buzz Killington">Buzz Killington</option>
+                        <option value="Tricia">Tricia Takanawa</option>
+                        <option value="Tom">Tom Tucker</option>
+                        <option value="Jake">Jake Tucker</option>
+                        <option value="Diane">Diane Simmons</option>
+                        <option value="Ollie">Ollie Williams</option>
+                        <option value="Dr Hartmann">Dr. Elmer Hartmann</option>
+                        <option value="Barbara">Barbara Pewterschmidt</option>
+                        <option value="Carter">Carter Pewterschmidt</option>
+                        <option value="Neil">Neil Goldmann</option>
+                        <option value="Mort">Mort Goldmann</option>
+                        <option value="Muriel">Muriel Goldmann</option>
+                        <option value="Consuela">Consuela</option>
+                        <option value="Jillian">Jillian Russel</option>
+                        <option value="Phineas and Barnaby">Phineas and Barnaby</option>
+                        <option value="Vern and Johnny">Vern and Johnny</option>
+                        <option value="Ernie">Ernie The Giant Chicken</option>
+                        <option value="Bruce">Bruce</option>
+                        <option value="Jeffrey">Jeffrey</option>
+                        <option value="Carl">Carl</option>
+                    </select>
+                </p>
+                <h3 id="allowing-to-de-select-all-at-once">Allowing to (de-)select all at once</h3>
+                <p>
+                    On a multiple select box it can be very tedious to click every single entry when you actually want to select everything at once. Luckily SOL has the <code>showSelectAll</code>
+                    option. Set this option to <code>true</code>
+                    and the SOL selection container will show two links at the top do select and deselect all entries.
+                </p>
+                <p>
+                    The label of these links can be customized by
+                    <a href="#toc-overriding-the-default-labels">
+                        overriding the <code>texts</code>
+                        configuration
+                    </a>
+                    .
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">multiple=</span>
+                    <span class="s">"multiple"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">showSelectAll</span>
+                    <span class="p">:</span>
+                    <span class="kc">true</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>
+                    <select id="my-multiselect-all" name="character6" multiple="multiple">
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                    </select>
+                </p>
+                <h3 id="allowing-empty-selections-for-single-selects">Allowing empty selections for single selects</h3>
+                <p>
+                    When you have single select box and you want to give the user to opportunity to select nothing at all, you can simply set the <code>allowNullSelection</code>
+                    option to <code>true</code>
+                    .
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"null-allowed-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"null-character"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Peter"</span>
+                    <span class="nt">&gt;</span>
+                                Peter Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Lois"</span>
+                    <span class="nt">&gt;</span>
+                                Lois Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Chris"</span>
+                    <span class="nt">&gt;</span>
+                                Chris Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Meg"</span>
+                    <span class="nt">&gt;</span>
+                                Meg Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;option</span>
+                    <span class="na">value=</span>
+                    <span class="s">"Stewie"</span>
+                    <span class="nt">&gt;</span>
+                                Stewie Griffin<span class="nt">&lt;/option &gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">();</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#null-allowed-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">allowNullSelection</span>
+                    <span class="p">:</span>
+                    <span class="kc">true</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>See the difference for yourself</p>
+                <p>
+                    <select class="basicSelect" name="character7">
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                    </select>
+                </p>
+                <p>
+                    <select id="null-allowed-select" name="character8">
+                        <br>
+                        <option value="Peter">Peter Griffin</option>
+                        <option value="Lois">Lois Griffin</option>
+                        <option value="Chris">Chris Griffin</option>
+                        <option value="Meg">Meg Griffin</option>
+                        <option value="Stewie">Stewie Griffin</option>
+                    </select>
+                </p>
+                <h3 id="overriding-the-default-labels">Overriding the default labels</h3>
+                <p>The texts used in SOL are completely customizable. You may set the texts for all SOL elements globally or on a per element basis.</p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-default-text-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="na">multiple</span>
+                    <span class="nt">&gt;</span>
+                    <span class="c">&lt;!-- options ommited for the example --&gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-custom-text-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character2"</span>
+                    <span class="na">multiple</span>
+                    <span class="nt">&gt;</span>
+                    <span class="c">&lt;!-- options ommited for the example --&gt;</span>
+                    <span class="nt">&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="c1">// set texts globally for all SOL like this</span>
+                    <span class="c1">// these are all available text options</span>
+                    <span class="c1">// also the values shown here are the default labels</span>
+                    <span class="nx">SearchableOptionList</span>
+                    <span class="p">.</span>
+                    <span class="nx">defaults</span>
+                    <span class="p">.</span>
+                    <span class="nx">texts</span>
+                    <span class="p">.</span>
+                    <span class="nx">noItemsAvailable</span>
+                    <span class="err">:</span>
+                    <span class="s1">'No entries found'</span>
+                    <span class="p">;</span>
+                    <span class="nx">SearchableOptionList</span>
+                    <span class="p">.</span>
+                    <span class="nx">defaults</span>
+                    <span class="p">.</span>
+                    <span class="nx">texts</span>
+                    <span class="p">.</span>
+                    <span class="nx">selectAll</span>
+                    <span class="err">:</span>
+                    <span class="s1">'Select all'</span>
+                    <span class="p">;</span>
+                    <span class="nx">SearchableOptionList</span>
+                    <span class="p">.</span>
+                    <span class="nx">defaults</span>
+                    <span class="p">.</span>
+                    <span class="nx">texts</span>
+                    <span class="p">.</span>
+                    <span class="nx">selectNone</span>
+                    <span class="err">:</span>
+                    <span class="s1">'Select none'</span>
+                    <span class="p">;</span>
+                    <span class="nx">SearchableOptionList</span>
+                    <span class="p">.</span>
+                    <span class="nx">defaults</span>
+                    <span class="p">.</span>
+                    <span class="nx">texts</span>
+                    <span class="p">.</span>
+                    <span class="nx">quickDelete</span>
+                    <span class="err">:</span>
+                    <span class="s1">'&amp;times;'</span>
+                    <span class="p">;</span>
+                    <span class="nx">SearchableOptionList</span>
+                    <span class="p">.</span>
+                    <span class="nx">defaults</span>
+                    <span class="p">.</span>
+                    <span class="nx">texts</span>
+                    <span class="p">.</span>
+                    <span class="nx">searchplaceholder</span>
+                    <span class="err">:</span>
+                    <span class="s1">'Click here to search'</span>
+                    <span class="p">;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-default-text-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">showSelectAll</span>
+                    <span class="p">:</span>
+                    <span class="kc">true</span>
+                    <span class="p">});</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-custom-text-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">showSelectAll</span>
+                    <span class="p">:</span>
+                    <span class="kc">true</span>
+                    <span class="p">,</span>
+                    <span class="c1">// set texts for this SOL only, overriding the defaults</span>
+                    <span class="na">texts</span>
+                    <span class="p">:</span>
+                    <span class="p">{</span>
+                    <span class="na">noItemsAvailable</span>
+                    <span class="p">:</span>
+                    <span class="s1">'Go on, nothing to see here'</span>
+                    <span class="p">,</span>
+                    <span class="na">selectAll</span>
+                    <span class="p">:</span>
+                    <span class="s1">'Get em all'</span>
+                    <span class="p">,</span>
+                    <span class="na">selectNone</span>
+                    <span class="p">:</span>
+                    <span class="s1">'Nah'</span>
+                    <span class="p">,</span>
+                    <span class="na">quickDelete</span>
+                    <span class="p">:</span>
+                    <span class="s1">'Kick'</span>
+                    <span class="p">,</span>
+                    <span class="na">searchplaceholder</span>
+                    <span class="p">:</span>
+                    <span class="s1">'Giggity giggity...'</span>
+                    <span class="p">}</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <p>
+                    <select id="default-texts" name="character9" multiple>
+                        <optgroup label="The Griffins">
+                            <option value="Peter">Peter Griffin</option>
+                            <option value="Lois" selected>Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <br>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <br>
+                            <option value="Joe" selected>Joe Swanson</option>
+                            <br>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                            <br>
+                        </optgroup>
+                        <br>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                    </select>
+                </p>
+                <p>
+                    <select id="custom-texts" name="character10" multiple>
+                        <br>
+                        <optgroup label="The Griffins">
+                            <option value="Peter">Peter Griffin</option>
+                            <option value="Lois" selected>Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <br>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <br>
+                            <option value="Joe" selected>Joe Swanson</option>
+                            <br>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                            <br>
+                        </optgroup>
+                        <br>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                    </select>
+                </p>
+                <h2 id="proper-positioning-of-the-option-popup">Proper positioning of the option popup</h2>
+                <p>
+                    Note: this is an advanced technique you most propably won &#39;t ever need. But if you ever need it, you might want to take a closer look at the internal structure of SOL to know which elements exist in the <code>this</code>
+                    scope.
+                </p>
+                <p>The position of the option popup needs to be recalculated every time the popup is opened or the position of the searchable option list changes (e.g. when scrolling). This is due to the fact, that the popup needs to be positioned fixed on the screen to break out of parent containers. If the popup wasn &#39;t to be positioned like that, half of it could be cut off due to the container constraints.</p>
+                <p>Here is an example to show you what I mean: The red border is a parent container with a fixed height (for example it could be a modal popup). For the SOL popup to break out of the container and display itself beyond the parent &#39;s bounds, we need to position it fixed on the screen:</p>
+                <p id="positionshowcase">
+                    Click any SOL to see the difference<br>
+                    <select name="character12" multiple>
+                        <optgroup label="The Griffins">
+                            <option value="Peter">Peter Griffin</option>
+                            <option value="Lois">Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <option value="Joe">Joe Swanson</option>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                        </optgroup>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                    </select>
+                    <select name="character13" multiple>
+                        <optgroup label="The Griffins">
+                            <option value="Peter">Peter Griffin</option>
+                            <option value="Lois">Lois Griffin</option>
+                            <option value="Chris">Chris Griffin</option>
+                            <option value="Meg">Meg Griffin</option>
+                            <option value="Stewie">Stewie Griffin</option>
+                        </optgroup>
+                        <optgroup label="Peter's Friends">
+                            <option value="Cleveland">Cleveland Brown</option>
+                            <option value="Joe">Joe Swanson</option>
+                            <option value="Quagmire">Glenn Quagmire</option>
+                        </optgroup>
+                        <option value="Evil Monkey">Evil Monkey</option>
+                        <option value="Herbert">John Herbert</option>
+                    </select>
+                </p>
+                <p>Unfortunately fixed elements can not automatically be positioned relative to another object so we have to take care of the ourselves. Most of the time the default implementation of the positioning algorithm should suit your needs but in some cases you might have to override it and position the popup yourself.</p>
+                <p>
+                    You do that in the <code>onScroll</code>
+                    event which gets called whenever the set <code>scrollTarget</code>
+                    is scrolled. The default scrollTarget to listen for scroll elements is the browser window <code>$(window)</code>
+                    but you could also set it to your content area in the options like this:
+                </p>
+                <figure class="highlight">
+                    <pre>
+                    <code class="language-html" data-lang="html">
+                    <span class="nt">&lt;select</span>
+                    <span class="na">id=</span>
+                    <span class="s">"my-select"</span>
+                    <span class="na">name=</span>
+                    <span class="s">"character"</span>
+                    <span class="nt">&gt;&lt;/select &gt;</span>
+                    <span class="nt">&lt;script </span>
+                    <span class="na">type=</span>
+                    <span class="s">"text/javascript"</span>
+                    <span class="nt">&gt;</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-select'</span>
+                    <span class="p">).</span>
+                    <span class="nx">searchableOptionList</span>
+                    <span class="p">({</span>
+                    <span class="na">scrollTarget</span>
+                    <span class="p">:</span>
+                    <span class="nx">$</span>
+                    <span class="p">(</span>
+                    <span class="s1">'#my-content-area'</span>
+                    <span class="p">),</span>
+                    <span class="c1">// change the scrollTarget if neccessary</span>
+                    <span class="na">events</span>
+                    <span class="p">:</span>
+                    <span class="p">{</span>
+                    <span class="c1">// override the default onScroll positioning event if neccessary</span>
+                    <span class="na">onScroll</span>
+                    <span class="p">:</span>
+                    <span class="kd">function</span>
+                    <span class="p">()</span>
+                    <span class="p">{</span>
+                    <span class="c1">// gets called when the contents of the</span>
+                    <span class="c1">// my-content-area container are scrolled</span>
+                    <span class="c1">// now you need to position sol popup</span>
+                    <span class="c1">// below is the default implementation to</span>
+                    <span class="c1">// give you a hint how to position the popup</span>
+                    <span class="c1">// adapt it to your needs</span>
+                    <span class="c1">// </span>
+                    <span class="c1">// you have access to all internal SOL attributes via "this."</span>
+                    <span class="kd">var</span>
+                    <span class="nx">posY</span>
+                    <span class="o">=</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$input</span>
+                    <span class="p">.</span>
+                    <span class="nx">offset</span>
+                    <span class="p">().</span>
+                    <span class="nx">top</span>
+                    <span class="o">-</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">config</span>
+                    <span class="p">.</span>
+                    <span class="nx">scrollTarget</span>
+                    <span class="p">.</span>
+                    <span class="nx">scrollTop</span>
+                    <span class="p">()</span>
+                    <span class="o">+</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$input</span>
+                    <span class="p">.</span>
+                    <span class="nx">outerHeight</span>
+                    <span class="p">(),</span>
+                    <span class="nx">selectionContainerWidth</span>
+                    <span class="o">=</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$innerContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">outerWidth</span>
+                    <span class="p">(</span>
+                    <span class="kc">false</span>
+                    <span class="p">)</span>
+                    <span class="o">-</span>
+                    <span class="nb">parseInt</span>
+                    <span class="p">(</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$selectionContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'border-left-width'</span>
+                    <span class="p">),</span>
+                    <span class="mi">10</span>
+                    <span class="p">)</span>
+                    <span class="o">-</span>
+                    <span class="nb">parseInt</span>
+                    <span class="p">(</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$selectionContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'border-right-width'</span>
+                    <span class="p">),</span>
+                    <span class="mi">10</span>
+                    <span class="p">);</span>
+                    <span class="k">if</span>
+                    <span class="p">(</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$innerContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'display'</span>
+                    <span class="p">)</span>
+                    <span class="o">!==</span>
+                    <span class="s1">'block'</span>
+                    <span class="p">)</span>
+                    <span class="p">{</span>
+                    <span class="c1">// container has a certain width</span>
+                    <span class="c1">// make selection container a bit wider</span>
+                    <span class="nx">selectionContainerWidth</span>
+                    <span class="o">=</span>
+                    <span class="nb">Math</span>
+                    <span class="p">.</span>
+                    <span class="nx">ceil</span>
+                    <span class="p">(</span>
+                    <span class="nx">selectionContainerWidth</span>
+                    <span class="o">*</span>
+                    <span class="mf">1.2</span>
+                    <span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span>
+                    <span class="p">{</span>
+                    <span class="c1">// no border radius on top</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$selectionContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'border-top-right-radius'</span>
+                    <span class="p">,</span>
+                    <span class="s1">'initial'</span>
+                    <span class="p">);</span>
+                    <span class="k">if</span>
+                    <span class="p">(</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$actionButtons</span>
+                    <span class="p">)</span>
+                    <span class="p">{</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$actionButtons</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'border-top-right-radius'</span>
+                    <span class="p">,</span>
+                    <span class="s1">'initial'</span>
+                    <span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="p">}</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$selectionContainer</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'top'</span>
+                    <span class="p">,</span>
+                    <span class="nb">Math</span>
+                    <span class="p">.</span>
+                    <span class="nx">floor</span>
+                    <span class="p">(</span>
+                    <span class="nx">posY</span>
+                    <span class="p">))</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'left'</span>
+                    <span class="p">,</span>
+                    <span class="nb">Math</span>
+                    <span class="p">.</span>
+                    <span class="nx">floor</span>
+                    <span class="p">(</span>
+                    <span class="k">this</span>
+                    <span class="p">.</span>
+                    <span class="nx">$container</span>
+                    <span class="p">.</span>
+                    <span class="nx">offset</span>
+                    <span class="p">().</span>
+                    <span class="nx">left</span>
+                    <span class="p">))</span>
+                    <span class="p">.</span>
+                    <span class="nx">css</span>
+                    <span class="p">(</span>
+                    <span class="s1">'width'</span>
+                    <span class="p">,</span>
+                    <span class="nx">selectionContainerWidth</span>
+                    <span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="p">}</span>
+                    <span class="p">});</span>
+                    <span class="p">});</span>
+                    <span class="nt">&lt;/script &gt;</span>
+                            </code>
+                        </pre>
+                </figure>
+                <style type="text/css">
+                    #positionshowcase {
+                        border: 1px solid red;
+                        padding: 5px;
+                        height: 140px;
+                        overflow: auto;
+                    }
+
+                        #positionshowcase .sol-container {
+                            display: inline-block;
+                        }
+
+                            #positionshowcase .sol-container:nth-of-type(1) .sol-selection-container {
+                                position: absolute;
+                                top: 30px;
+                                width: 280px;
+                            }
+                </style>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#demonstration').searchableOptionList({
+                            maxHeight: '300px',
+                            showSelectAll: true
+                        });
+
+                        $('.basicSelect').searchableOptionList();
+
+                        $('#json-data-array-example').searchableOptionList({
+                            data: [{
+                                "type": "optiongroup",
+                                "label": "The Griffins",
+                                "children": [{
+                                    "type": "option",
+                                    "value": "Peter",
+                                    "label": "Peter Griffin"
+                                }, {
+                                    "type": "option",
+                                    "value": "Lois",
+                                    "label": "Lois Griffin"
+                                }, {
+                                    "type": "option",
+                                    "value": "Chris",
+                                    "label": "Chris Griffin"
+                                }, {
+                                    "type": "option",
+                                    "value": "Meg",
+                                    "label": "Meg Griffin"
+                                }, {
+                                    "type": "option",
+                                    "value": "Stewie",
+                                    "label": "Stewie Griffin"
+                                }]
+                            }, {
+                                "type": "optiongroup",
+                                "label": "Peter's Friends",
+                                "children": [{
+                                    "type": "option",
+                                    "value": "Cleveland",
+                                    "label": "Cleveland Brown"
+                                }, {
+                                    "type": "option",
+                                    "value": "Joe",
+                                    "label": "Joe Swanson"
+                                }, {
+                                    "type": "option",
+                                    "value": "Quagmire",
+                                    "label": "Glenn Quagmire"
+                                }]
+                            }, {
+                                "type": "option",
+                                "value": "Evil Monkey",
+                                "label": "Evil Monkey"
+                            }, {
+                                "type": "option",
+                                "value": "Herbert",
+                                "label": "John Herbert"
+                            }]
+                        });
+
+                        $('#my-verylong-select').searchableOptionList({
+                            maxHeight: '250px'
+                        });
+                        $('#my-multiselect-all').searchableOptionList({
+                            showSelectAll: true
+                        });
+                        $('#null-allowed-select').searchableOptionList({
+                            allowNullSelection: true
+                        });
+                        $('#default-texts').searchableOptionList({
+                            showSelectAll: true
+                        });
+                        $('#custom-texts').searchableOptionList({
+                            showSelectAll: true,
+                            texts: {
+                                noItemsAvailable: 'Go on, nothing to see here',
+                                selectAll: 'Get em all',
+                                selectNone: 'Nah',
+                                quickDelete: 'Kick',
+                                searchplaceholder: 'Giggity giggity...'
+                            }
+                        });
+
+                        $('#positionshowcase select:first').searchableOptionList({
+                            texts: {
+                                searchplaceholder: 'Not fixed'
+                            },
+                            events: {
+                                onScroll: function () { }
+                            }
+                        });
+                        $('#positionshowcase select:not(:first)').searchableOptionList({
+                            texts: {
+                                searchplaceholder: 'Fixed'
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <footer class="wrapper">
+        &copy;2016 - Patrick Bauerochse
+    </footer>
+    <script type="text/javascript">
+        $(function () {
+            $('#toc').toc({
+                'selectors': 'h2,h3,h4',
+                'container': '#main-content',
+                'smoothScrolling': true
+            });
+        });
+    </script>
+</body>
+</html>
