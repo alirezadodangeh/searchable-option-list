@@ -6,9 +6,18 @@
     <script type="text/javascript" src="sol.js"></script>
 </head>
 <body>
+
+
     <div id="my-select" data-sol-name="character4" multiple="multiple"></div>
 
-    <button onclick="OptionList.GetSelection()">GetSelection</button>
+    <button onclick="OptionList.GetSelection()">GetSelection LogConsole</button>
+
+
+    <hr />
+    <a href="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Seachable-Option-List-with-Checkboxes/">Refrence</a>
+
+
+
 
     <script type="text/javascript">
         var OptionList = {};
@@ -49,7 +58,7 @@
                 }]
             });
 
-            OptionList.GetSelection =  function GetSelection() {
+            OptionList.GetSelection = function GetSelection() {
                 searchable.getSelection().each(function (index, item) { console.log(item) });
             }
         });
@@ -59,11 +68,11 @@
 
 
     <script type="text/javascript">
-                                        //$(function () {
-                                        //    $('#my-select').searchableOptionList({
-                                        //        data: 'data.json'
-                                        //    });
-                                        //});
+                                                //$(function () {
+                                                //    $('#my-select').searchableOptionList({
+                                                //        data: 'data.json'
+                                                //    });
+                                                //});
     </script>
 
 
